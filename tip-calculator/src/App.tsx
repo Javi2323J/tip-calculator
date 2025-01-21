@@ -1,11 +1,16 @@
 import React from 'react'
+
 import { menuItems } from './data/db'
 import useOrder from './hooks/useOrder'
+
 import MenuItem from './components/MenuItem'
+import OrderContents from './components/OrderContents'
 
 function App(): React.JSX.Element {
   const {
-    addItem
+    order,
+    addItem,
+    removeItem
   } = useOrder()
   return (
     <>
@@ -28,8 +33,11 @@ function App(): React.JSX.Element {
           </div>
         </div>
 
-        <div>
-          <h2>Consume</h2>
+        <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
+          <OrderContents
+            order={order}
+            removeItem={removeItem}
+          />
         </div>
       </main>
     </>
