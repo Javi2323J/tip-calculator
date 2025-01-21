@@ -6,12 +6,15 @@ import useOrder from './hooks/useOrder'
 import MenuItem from './components/MenuItem'
 import OrderContents from './components/OrderContents'
 import OrderTotals from './components/OrderTotals'
+import TipPercentageForm from './components/TipPercentageForm'
 
 function App(): React.JSX.Element {
   const {
     order,
     addItem,
-    removeItem
+    removeItem,
+    tip,
+    setTip
   } = useOrder()
   return (
     <>
@@ -40,8 +43,13 @@ function App(): React.JSX.Element {
             removeItem={removeItem}
           />
 
+          <TipPercentageForm
+            setTip={setTip}
+          />
+
           <OrderTotals
             order={order}
+            tip={tip}
           />
         </div>
       </main>
