@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 
 import { menuItems } from './data/db'
 import useOrder from './hooks/useOrder'
@@ -7,6 +7,7 @@ import MenuItem from './components/MenuItem'
 import OrderContents from './components/OrderContents'
 import OrderTotals from './components/OrderTotals'
 import TipPercentageForm from './components/TipPercentageForm'
+import { initialState, orderReducer } from './reducers/order-reducer'
 
 function App(): React.JSX.Element {
   const {
@@ -17,6 +18,9 @@ function App(): React.JSX.Element {
     setTip,
     placeOrder
   } = useOrder()
+
+  const [state, dispatch] = useReducer(orderReducer, initialState)
+
   return (
     <>
       <header className="bg-teal-400 py-5">
